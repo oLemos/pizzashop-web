@@ -11,7 +11,7 @@ export const AuthLayout = () => {
         </div>
 
         <footer className="text-sm">
-          Painel do parceiro &copy; pizza.shop - {new Date().getFullYear()}
+          Partner Panel &copy; pizza.shop - {new Date().getFullYear()}
         </footer>
       </div>
 
