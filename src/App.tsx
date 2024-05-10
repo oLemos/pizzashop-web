@@ -7,11 +7,9 @@ import { router } from './routes'
 
 export function App() {
   return (
-    <div className="flex h-screen items-center justify-center">
-      <HelmetProvider>
-        <Helmet titleTemplate="%s | pizza.shop" />
-        <RouterProvider router={router} />
-      </HelmetProvider>
-    </div>
+    <HelmetProvider>
+      <Helmet titleTemplate="%s | pizza.shop" />
+      <RouterProvider router={router} />
+    </HelmetProvider>
   )
 }
