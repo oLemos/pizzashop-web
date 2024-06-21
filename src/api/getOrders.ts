@@ -1,5 +1,9 @@
 import { api } from '@/lib/axios'
 
+export interface GetOrderQuery {
+  pageIndex?: number | null
+}
+
 export interface GetOrdersResponse {
   orders: {
     orderId: string
@@ -15,16 +19,14 @@ export interface GetOrdersResponse {
   }
 }
 
-export async function getOrders() {
+export async function getOrders({ pageIndex }: GetOrderQuery) {
   const queryParams = {
     params: {
-      pageIndex: 0,
+      pageIndex,
     },
   }
 
   const response = await api.get<GetOrdersResponse>('/orders', queryParams)
-
-  console.log(response.data)
 
   const formattedOrders = response.data.orders.map((order) => {
     return {
