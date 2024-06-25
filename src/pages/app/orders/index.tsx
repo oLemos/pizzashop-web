@@ -19,14 +19,24 @@ import { OrderTableRow } from './OrderTableRow'
 export const Orders = () => {
   const [searchParams, setSearchParams] = useSearchParams()
 
+  const status = searchParams.get('status')
+  const orderId = searchParams.get('orderId')
+  const customerName = searchParams.get('customerName')
+
   const pageIndex = z.coerce
     .number()
     .transform((page) => Math.max(page - 1, 0))
     .parse(searchParams.get('page') ?? '1')
 
   const { data: result } = useQuery({
-    queryKey: ['orders', pageIndex],
-    queryFn: () => getOrders({ pageIndex }),
+    queryKey: ['orders', pageIndex, orderId, customerName, status],
+    queryFn: () =>
+      getOrders({
+        pageIndex,
+        orderId,
+        customerName,
+        status: status === 'all' ? null : status,
+      }),
   })
 
   function handlePaginate(pageIndex: number) {
