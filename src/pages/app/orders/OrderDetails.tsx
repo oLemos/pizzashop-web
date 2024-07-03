@@ -4,13 +4,13 @@ import { ptBR } from 'date-fns/locale'
 
 import { getOrderDetails } from '@/api/getOrderDetails'
 
-import { OrderStatus } from './OrderStatus'
+import { OrderStatus } from '../../../components/OrderStatus'
 import {
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from './ui/dialog'
+} from '../../../components/ui/dialog'
 import {
   Table,
   TableBody,
@@ -19,7 +19,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from './ui/table'
+} from '../../../components/ui/table'
+import { OrderDetailsSkeleton } from './OrderDetailsSkeleton'
 
 export interface OrderDetailsProps {
   orderId: string
@@ -40,7 +41,7 @@ export const OrderDetails = ({ orderId, isOpen }: OrderDetailsProps) => {
         <DialogDescription>Order Details</DialogDescription>
       </DialogHeader>
 
-      {order && (
+      {order ? (
         <div className="space-y-6">
           <Table>
             <TableBody>
@@ -135,6 +136,8 @@ export const OrderDetails = ({ orderId, isOpen }: OrderDetailsProps) => {
             </TableFooter>
           </Table>
         </div>
+      ) : (
+        <OrderDetailsSkeleton />
       )}
     </DialogContent>
   )
