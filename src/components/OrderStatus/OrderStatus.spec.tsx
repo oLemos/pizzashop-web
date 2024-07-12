@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 
-import { OrderStatus } from './OrderStatus'
+import { OrderStatus } from '.'
 
 describe('Order Status', () => {
   it('should display the right text when order status is: Pending', () => {
