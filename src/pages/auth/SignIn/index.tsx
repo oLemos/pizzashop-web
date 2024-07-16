@@ -67,7 +67,7 @@ export const SignIn = () => {
 
           <form onSubmit={handleSubmit(handleSignIn)} className="space-y-4">
             <div className="space-y-2">
-              <Label>Your e-mail</Label>
+              <Label htmlFor="email">Your e-mail</Label>
               <Input id="email" type="email" {...register('email')} />
             </div>
 
