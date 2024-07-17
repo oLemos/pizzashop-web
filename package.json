@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:test": "vite --port 12345 --mode test",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "vitest"
@@ -57,11 +58,17 @@
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-simple-import-sort": "^12.1.0",
     "globals": "^15.1.0",
+    "msw": "^2.3.1",
     "postcss": "^8.4.38",
     "prettier-plugin-tailwindcss": "^0.5.14",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
     "vitest": "^1.6.0"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }
