@@ -27,3 +27,7 @@ dist-ssr
 # Added manually
 *lock
 package-lock.json
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
