@@ -95,7 +95,7 @@ export const StoreProfileDialog = () => {
         description: data.description,
       })
 
-      toast.success('Profile updated successfully')
+      toast.success('Profile updated successfully.')
     } catch (error) {
       console.error(error)
       toast.error('Error on update profile. Try again later.')
