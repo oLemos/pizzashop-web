@@ -48,7 +48,7 @@ export const SignUp = () => {
         },
       })
     } catch (error) {
-      toast.error('Something went wrong! Please try again later.', {
+      toast.error('Error when creating establishment.', {
         action: {
           label: 'Try Again',
           onClick: () => handleSignUp(data),
