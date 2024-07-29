@@ -1,8 +1,5 @@
 import { expect, test } from '@playwright/test'
 
-// If the test ui shows a white screen, use the timeout to wait for the render to complete
-// await page.waitForTimeout(2000)
-
 test('Update profile successfully', async ({ page }) => {
   await page.goto('/', { waitUntil: 'networkidle' })
 
@@ -17,14 +14,13 @@ test('Update profile successfully', async ({ page }) => {
 
   const toast = page.getByText('Profile updated successfully.')
 
-  expect(toast).toBeVisible()
+  await expect(toast).toBeVisible()
 
   await page.getByRole('button', { name: 'Cancel' }).click()
 
-  // Needed because of the close modal animation
-  await page.waitForTimeout(500)
-
-  expect(page.getByRole('button', { name: 'Pizza Shop Mock' })).toBeVisible()
+  await expect(
+    page.getByRole('button', { name: 'Pizza Shop Mock' }),
+  ).toBeVisible()
 })
 
 test('Update profile unsuccessfully', async ({ page }) => {
@@ -41,5 +37,5 @@ test('Update profile unsuccessfully', async ({ page }) => {
 
   const toast = page.getByText('Error on update profile. Try again later.')
 
-  expect(toast).toBeVisible()
+  await expect(toast).toBeVisible()
 })

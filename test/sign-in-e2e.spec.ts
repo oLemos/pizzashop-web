@@ -1,8 +1,5 @@
 import { expect, test } from '@playwright/test'
 
-// If the test ui shows a white screen, use the timeout to wait for the render to complete
-// await page.waitForTimeout(2000)
-
 test('Sign in successfully', async ({ page }) => {
   await page.goto('/sign-in', { waitUntil: 'networkidle' })
 
@@ -11,7 +8,7 @@ test('Sign in successfully', async ({ page }) => {
 
   const toast = page.getByText('We sent an authentication link to your email.')
 
-  expect(toast).toBeVisible()
+  await expect(toast).toBeVisible()
 })
 
 test('Sign in with wrong credentials', async ({ page }) => {
@@ -22,7 +19,7 @@ test('Sign in with wrong credentials', async ({ page }) => {
 
   const toast = page.getByText('Something went wrong! Please try again later.')
 
-  expect(toast).toBeVisible()
+  await expect(toast).toBeVisible()
 })
 
 test('Navigate to new restaurant page', async ({ page }) => {
